@@ -1,6 +1,6 @@
 import getHandler from '../handlers/handler';
 
-export default function generate360view(containerId) {
+export default function generate360view(containerId, sources) {
     let current = 0, images;
 
     function incrementCurrentImage(i) {
@@ -27,6 +27,10 @@ export default function generate360view(containerId) {
     const container = document.getElementById(containerId);
     const handler = getHandler(container);
     images = document.querySelectorAll("#" + containerId + " img");
+    if(!images.length && sources && sources.length) {
+        container.innerHTML = sources.map(i=>'<img src="' + i + '" />').join('');
+        images = document.querySelectorAll("#" + containerId + " img");
+    }
     hideImages();
 
     handler.subscribe(toggleImages);
