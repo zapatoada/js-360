@@ -72,8 +72,8 @@ export default function getHandler(container) {
         .do(clearPreviousPosition);
 
     const move = Observable.merge(
-        Observable.fromEvent(container, 'mousemove'),
-        Observable.fromEvent(container, 'touchmove')
+        Observable.fromEvent(window, 'mousemove'),
+        Observable.fromEvent(window, 'touchmove')
     )
         .do(preventDefault)
         .map(calculatePositions)
