@@ -65,8 +65,8 @@ export default function getHandler(container) {
         .do(setStartingPosition);
 
     const end = Observable.merge(
-        Observable.fromEvent(container, 'mouseup'),
-        Observable.fromEvent(container, 'touchend')
+        Observable.fromEvent(window, 'mouseup'),
+        Observable.fromEvent(window, 'touchend')
     )
         .do(preventDefault)
         .do(clearPreviousPosition);
